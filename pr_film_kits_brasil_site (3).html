@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PR Film Kits Brasil</title>
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#121214;
+      --panel2:#18181b;
+      --line:#26262b;
+      --text:#f5f5f5;
+      --muted:#b6b6bc;
+      --red:#d90b0b;
+      --red2:#ff2f2f;
+      --green:#16a34a;
+      --shadow:0 18px 45px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top, rgba(217,11,11,.14), transparent 28%), linear-gradient(180deg,var(--bg) 0%, #090909 100%);color:var(--text)}
+    .container{max-width:1120px;margin:auto;padding:0 20px}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--red),#760000);font-weight:800;box-shadow:0 12px 24px rgba(217,11,11,.28)}
+    .brand-text strong{display:block;font-size:17px}
+    .brand-text span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .btn,.btn-outline,.btn-whats,.btn-mini{border:none;cursor:pointer;border-radius:14px;font-weight:700;transition:.2s ease}
+    .btn:hover,.btn-outline:hover,.btn-whats:hover,.btn-mini:hover{transform:translateY(-1px)}
+    .btn{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;padding:14px 18px;box-shadow:0 12px 28px rgba(217,11,11,.25)}
+    .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.10);padding:14px 18px}
+    .hero{padding:42px 0 18px}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.07);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr}
+    .hero-left{padding:42px}
+    .hero-right{background:linear-gradient(145deg,#151518 0%, #090909 60%);border-left:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;padding:30px}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(217,11,11,.12);color:#ffd6d6;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.06)}
+    .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.02;margin:16px 0 12px;letter-spacing:-1.4px}
+    .hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:670px;margin:0}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+    .stat{background:#101012;border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:16px}
+    .stat strong{display:block;font-size:24px;margin-bottom:4px}
+    .stat span{color:var(--muted);font-size:13px}
+    .side-panel{width:100%;max-width:360px;background:linear-gradient(180deg,#111114,#0c0c0d);border:1px solid rgba(255,255,255,.07);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+    .side-panel h3{margin:0 0 10px;font-size:22px}
+    .side-panel p{margin:0;color:var(--muted);line-height:1.6}
+    .section{padding:18px 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .card{background:linear-gradient(180deg,var(--panel),var(--panel2));padding:22px;border-radius:22px;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .card h3{margin:0 0 12px;font-size:22px}
+    .label{display:block;font-weight:700;margin:8px 0 6px}
+    .input,.select,.textarea{width:100%;padding:14px 14px;margin:0 0 12px;border-radius:14px;border:1px solid #2a2a2f;background:#0c0c0e;color:#fff;outline:none}
+    .input:focus,.select:focus,.textarea:focus{border-color:rgba(255,47,47,.55);box-shadow:0 0 0 4px rgba(217,11,11,.10)}
+    .price-box{background:linear-gradient(135deg,rgba(217,11,11,.15),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);padding:18px;border-radius:18px;margin:16px 0}
+    .price-label{color:var(--muted);font-size:14px}
+    .price{font-size:40px;font-weight:800;letter-spacing:-1px;margin-top:6px}
+    .summary-list{display:grid;gap:10px;margin-top:16px}
+    .summary-item{display:flex;justify-content:space-between;gap:12px;padding:12px 14px;background:#0f0f11;border:1px solid rgba(255,255,255,.06);border-radius:14px}
+    .summary-item span{color:var(--muted)}
+    .btn-whats{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;padding:16px 18px;width:100%;font-size:17px;box-shadow:0 12px 28px rgba(217,11,11,.25)}
+    .small{font-size:13px;color:var(--muted)}
+    .hidden{display:none !important}
+    .highlight{background:rgba(217,11,11,.08);border:1px solid rgba(217,11,11,.16);color:#ffd7d7;padding:12px 14px;border-radius:14px;font-size:13px;line-height:1.5;margin-bottom:12px}
+    .footer{padding:30px 0 38px;color:#a9a9af}.footer-box{border-top:1px solid rgba(255,255,255,.06);padding-top:22px;text-align:center}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);display:none;align-items:center;justify-content:center;z-index:100}
+    .modal-box{width:min(94vw,460px);background:#0e0e10;border:1px solid #26262b;border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+    .crm-panel{margin-top:22px}
+    .crm-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+    .kpi{background:#0e0e10;border:1px solid #26262b;border-radius:16px;padding:14px}
+    .kpi span{display:block;color:var(--muted);font-size:13px}.kpi strong{display:block;font-size:24px;margin-top:6px}
+    .crm-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}
+    .crm-table{width:100%;border-collapse:collapse;min-width:980px;background:#0d0d0f}
+    .crm-table th,.crm-table td{padding:12px 10px;border-bottom:1px solid #1e1e22;text-align:left;vertical-align:top;font-size:14px}
+    .crm-table th{background:#141417;color:#ddd}
+    .crm-status{padding:9px 10px;border-radius:10px;background:#0c0c0e;color:#fff;border:1px solid #2b2b30}
+    .btn-mini{padding:10px 12px;font-size:12px}.btn-save{background:var(--green);color:#fff}.btn-del{background:#421111;color:#fff}.btn-gray{background:#1d1d21;color:#fff}
+    .note-box{background:#0d0d0f;border:1px dashed #323238;border-radius:12px;padding:12px}
+    @media(max-width:920px){.hero-grid,.grid,.kpi-grid,.hero-stats{grid-template-columns:1fr}.hero-left{padding:28px}.hero-right{border-left:none;border-top:1px solid rgba(255,255,255,.05)}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" id="prSecret">PR</div>
+        <div class="brand-text">
+          <strong>PR Film Kits Brasil</strong>
+          <span>Película sob medida • envio para todo Brasil</span>
+        </div>
+      </div>
+      <button class="btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Comprar agora</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <span class="badge">🔥 Corte exato • venda nacional • padrão premium</span>
+            <h1>Película pronta para seu carro, com visual profissional e compra rápida</h1>
+            <p>Escolha o veículo, a linha da película e a tonalidade ideal. Receba em casa um kit pensado para facilitar sua compra e aumentar sua confiança no acabamento.</p>
+            <div class="hero-actions">
+              <button class="btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Escolher meu carro</button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><strong>Brasil</strong><span>envio nacional</span></div>
+              <div class="stat"><strong>Plotter</strong><span>corte preciso</span></div>
+              <div class="stat"><strong>Premium</strong><span>mais valor percebido</span></div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="side-panel">
+              <h3>Película sob medida</h3>
+              <p>Selecione o kit ideal para seu carro e envie seu pedido pelo WhatsApp com tudo organizado e pronto para atendimento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <h3>Configure seu kit</h3>
+          <label class="label">Nome</label>
+          <input type="text" id="nome" class="input" placeholder="Seu nome completo">
+          <label class="label">WhatsApp</label>
+          <input type="tel" id="fone" class="input" placeholder="Seu WhatsApp com DDD">
+          <label class="label">Carro</label>
+          <select id="carro" class="select" onchange="toggleOutro()">
+            <option>Onix</option><option>HB20</option><option>Corolla</option><option>Civic</option><option>T-Cross</option><option>Tracker</option><option>Creta</option><option>Compass</option><option>HR-V</option><option>Kicks</option><option>Outro</option>
+          </select>
+          <input type="text" id="outro" class="input hidden" placeholder="Digite o modelo do carro">
+          <label class="label">Película</label>
+          <select id="pel" class="select" onchange="calc()">
+            <option value="149.99">Profissional</option>
+            <option value="289.99">Nano Carbono 🔥 Mais vendida</option>
+            <option value="489.99">Nano Cerâmica</option>
+            
+          </select>
+          <label class="label">Tonalidade</label>
+          <select id="ton" class="select" onchange="calc()">
+            <option>G5</option><option>G20</option><option>G35</option><option>G50</option><option>G70</option>
+          </select>
+          <div class="highlight">Profissional e Nano Carbono já incluem para-brisa. Na linha Nano Cerâmica você pode escolher com ou sem para-brisa.</div>
+          <div id="paraWrap" class="hidden">
+            <label class="label"><input type="checkbox" id="para" onchange="calc()"> Incluir para-brisa na Nano Cerâmica</label>
+            <div class="highlight">🔥 Recomendado para melhor conforto térmico e acabamento premium.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Resumo do pedido</h3>
+          <div class="price-box">
+            <div class="price-label">Valor estimado</div>
+            <div class="price">R$ <span id="total">149,99</span></div>
+          </div>
+          <div class="summary-list">
+            <div class="summary-item"><span>Cliente</span><strong id="sNome">—</strong></div>
+            <div class="summary-item"><span>WhatsApp</span><strong id="sFone">—</strong></div>
+            <div class="summary-item"><span>Carro</span><strong id="sCarro">Onix</strong></div>
+            <div class="summary-item"><span>Película</span><strong id="sPel">Profissional</strong></div>
+            <div class="summary-item"><span>Tonalidade</span><strong id="sTon">G5</strong></div>
+            <div class="summary-item"><span>Para-brisa</span><strong id="sPara">Não</strong></div>
+          </div>
+          <button class="btn-whats" onclick="comprar()">Comprar via WhatsApp</button>
+        </div>
+      </div>
+
+      <div id="crmPanel" class="crm-panel hidden">
+        <div class="card">
+          <div class="crm-top">
+            <div><h3 style="margin:0">CRM interno</h3><p class="small" style="margin:6px 0 0">Área privada para seu controle de leads e pedidos.</p></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn-mini btn-gray" onclick="trocarSenhaCRM()">Trocar senha</button>
+              <button class="btn-mini btn-gray" onclick="exportarCRM()">Exportar backup</button>
+              <button class="btn-mini btn-gray" onclick="document.getElementById('importarCRM').click()">Importar backup</button>
+              <input type="file" id="importarCRM" class="hidden" accept="application/json" onchange="importarCRM(event)">
+              <button class="btn-mini btn-del" onclick="logoutCRM()">Sair</button>
+            </div>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi"><span>Total de leads</span><strong id="kpiTotal">0</strong></div>
+            <div class="kpi"><span>Aguardando pagamento</span><strong id="kpiAguardando">0</strong></div>
+            <div class="kpi"><span>Pagos</span><strong id="kpiPagos">0</strong></div>
+            <div class="kpi"><span>Valor total</span><strong id="kpiValor">R$ 0,00</strong></div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+            <select id="filtroStatus" class="select" style="max-width:250px;margin:0" onchange="renderCRM()">
+              <option value="">Todos os status</option><option>Novo lead</option><option>Atendimento iniciado</option><option>Orçamento enviado</option><option>Aguardando pagamento</option><option>Pago</option><option>Em produção</option><option>Enviado</option><option>Finalizado</option>
+            </select>
+            <input type="text" id="buscarLead" class="input" style="max-width:300px;margin:0" placeholder="Buscar por nome, telefone ou carro" oninput="renderCRM()">
+          </div>
+          <div class="crm-table-wrap">
+            <table class="crm-table">
+              <thead><tr><th>Data</th><th>Cliente</th><th>WhatsApp</th><th>Carro</th><th>Película</th><th>Tonalidade</th><th>Para-brisa</th><th>Valor</th><th>Status</th><th>Observações</th><th>Ações</th></tr></thead>
+              <tbody id="crmBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container footer-box"><p>PR Rodrigues Film • WhatsApp (51) 99277-8968</p></div></footer>
+
+  <div class="modal" id="crmModal">
+    <div class="modal-box">
+      <h3>Acesso à área interna</h3>
+      <p class="small">Área exclusiva para seu controle interno.</p>
+      <input type="password" id="senhaCRMInput" class="input" placeholder="Digite sua senha">
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="entrarCRM()">Entrar</button><button class="btn-outline" onclick="fecharModalCRM()">Fechar</button></div>
+      <p class="small" id="crmSenhaInfo" style="margin-top:12px"></p>
+    </div>
+  </div>
+
+  <script>
+    const CRM_STORAGE_KEY='pr_film_kits_crm_leads';
+    const CRM_PASSWORD_KEY='pr_film_kits_crm_password';
+    let crmLiberado=false;
+    function format(v){return Number(v).toFixed(2).replace('.',',');}
+    function moedaBR(v){return 'R$ '+Number(v||0).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+    function getCarroAtual(){const carro=document.getElementById('carro').value;return carro==='Outro'?(document.getElementById('outro').value.trim()||'Outro'):carro;}
+    function toggleOutro(){const carro=document.getElementById('carro').value;document.getElementById('outro').classList.toggle('hidden',carro!=='Outro');calc();}
+    function calc(){
+      const nome=document.getElementById('nome').value.trim();
+      const fone=document.getElementById('fone').value.trim();
+      const carro=getCarroAtual();
+      const pelSelect=document.getElementById('pel');
+      const pelText=pelSelect.options[pelSelect.selectedIndex].text;
+      const pel=parseFloat(pelSelect.value);
+      let ton=document.getElementById('ton').value;
+      let para=document.getElementById('para').checked;
+      if(ton==='G70' && pel!==489.99){ton='G50';document.getElementById('ton').value=ton;alert('G70 apenas na linha cerâmica.');}
+      const isCeramica = (pel===489.99);
+      if(isCeramica){
+        document.getElementById('paraWrap').classList.remove('hidden');
+      }else{
+        document.getElementById('paraWrap').classList.add('hidden');
+        document.getElementById('para').checked=false;
+        para=false;
+      }
+      let total=pel;
+      if(isCeramica && para) total+=280;
+      document.getElementById('total').innerText=format(total);
+      document.getElementById('sNome').innerText=nome||'—';
+      document.getElementById('sFone').innerText=fone||'—';
+      document.getElementById('sCarro').innerText=carro;
+      document.getElementById('sPel').innerText=pelText;
+      document.getElementById('sTon').innerText=ton;
+      document.getElementById('sPara').innerText = isCeramica ? (para ? 'Sim (+ R$ 280,00)' : 'Não incluso') : 'Incluso';
+    }
+    function validarFormulario(){const nome=document.getElementById('nome').value.trim();const fone=document.getElementById('fone').value.trim();if(!nome){alert('Preencha seu nome.');document.getElementById('nome').focus();return false;}if(!fone){alert('Preencha seu WhatsApp.');document.getElementById('fone').focus();return false;}return true;}
+    function getLeads(){try{return JSON.parse(localStorage.getItem(CRM_STORAGE_KEY)||'[]');}catch(e){return [];}}
+    function saveLeads(leads){localStorage.setItem(CRM_STORAGE_KEY,JSON.stringify(leads));}
+    function criarLeadDoFormulario(){const pelSelect=document.getElementById('pel');return {id:Date.now(),data:new Date().toLocaleString('pt-BR'),nome:document.getElementById('nome').value.trim(),telefone:document.getElementById('fone').value.trim(),carro:getCarroAtual(),pelicula:pelSelect.options[pelSelect.selectedIndex].text,tonalidade:document.getElementById('ton').value,parabrisa:(function(){ const pel=parseFloat(document.getElementById('pel').value); const isCeramica=(pel===489.99 || pel===204.99); return isCeramica ? (document.getElementById('para').checked ? 'Sim' : 'Não') : 'Incluso'; })(),valor:Number(document.getElementById('total').innerText.replace('.','').replace(',','.')),status:'Novo lead',observacoes:''};}
+    function salvarLeadInterno(silencioso){if(!validarFormulario()) return false;const leads=getLeads();leads.unshift(criarLeadDoFormulario());saveLeads(leads);atualizarKPIs();renderCRM();if(!silencioso) alert('Lead salvo com sucesso.');return true;}
+    function comprar(){if(!salvarLeadInterno(true)) return;const nome=document.getElementById('nome').value.trim();const carro=getCarroAtual();const pel=document.getElementById('pel').options[document.getElementById('pel').selectedIndex].text;const ton=document.getElementById('ton').value;const pelValue=parseFloat(document.getElementById('pel').value);
+      const isCeramica=(pelValue===489.99);
+      const para=isCeramica ? (document.getElementById('para').checked ? 'Sim' : 'Não') : 'Incluso';const total=document.getElementById('total').innerText;const msg=`Olá! Quero comprar um kit.%0A%0ANome: ${nome}%0ACarro: ${carro}%0APelícula: ${pel}%0ATonalidade: ${ton}%0APara-brisa: ${para}%0ATotal: R$ ${total}`;window.open(`https://wa.me/5551992778968?text=${msg}`,'_blank');}
+    function abrirAcessoCRM(){const senha=localStorage.getItem(CRM_PASSWORD_KEY);document.getElementById('crmSenhaInfo').innerText=senha?'Digite sua senha para abrir a área interna.':'Primeiro acesso: crie sua senha local.';document.getElementById('crmModal').style.display='flex';document.getElementById('senhaCRMInput').value='';document.getElementById('senhaCRMInput').focus();}
+    function fecharModalCRM(){document.getElementById('crmModal').style.display='none';}
+    function entrarCRM(){const input=document.getElementById('senhaCRMInput').value.trim();const senhaAtual=localStorage.getItem(CRM_PASSWORD_KEY);if(!senhaAtual){if(!input){alert('Defina uma senha.');return;}localStorage.setItem(CRM_PASSWORD_KEY,input);crmLiberado=true;document.getElementById('crmPanel').classList.remove('hidden');fecharModalCRM();atualizarKPIs();renderCRM();alert('Senha criada com sucesso.');return;}if(input!==senhaAtual){alert('Senha incorreta.');return;}crmLiberado=true;document.getElementById('crmPanel').classList.remove('hidden');fecharModalCRM();atualizarKPIs();renderCRM();}
+    function logoutCRM(){crmLiberado=false;document.getElementById('crmPanel').classList.add('hidden');}
+    function trocarSenhaCRM(){const atual=prompt('Digite a senha atual:');const senhaSalva=localStorage.getItem(CRM_PASSWORD_KEY);if(atual!==senhaSalva){alert('Senha atual incorreta.');return;}const nova=prompt('Digite a nova senha:');if(!nova) return;localStorage.setItem(CRM_PASSWORD_KEY,nova);alert('Senha alterada com sucesso.');}
+    function excluirLead(id){if(!confirm('Deseja excluir este lead?')) return;let leads=getLeads().filter(l=>l.id!==id);saveLeads(leads);atualizarKPIs();renderCRM();}
+    function atualizarLead(id){const status=document.getElementById('status_'+id).value;const observacoes=document.getElementById('obs_'+id).value;const leads=getLeads().map(l=>l.id===id?{...l,status,observacoes}:l);saveLeads(leads);atualizarKPIs();renderCRM();alert('Lead atualizado.');}
+    function atualizarKPIs(){const leads=getLeads();document.getElementById('kpiTotal').innerText=leads.length;document.getElementById('kpiAguardando').innerText=leads.filter(l=>l.status==='Aguardando pagamento').length;document.getElementById('kpiPagos').innerText=leads.filter(l=>l.status==='Pago').length;document.getElementById('kpiValor').innerText=moedaBR(leads.reduce((a,b)=>a+Number(b.valor||0),0));}
+    function renderCRM(){if(!crmLiberado) return;const body=document.getElementById('crmBody');const filtro=document.getElementById('filtroStatus').value.toLowerCase();const busca=document.getElementById('buscarLead').value.toLowerCase();const leads=getLeads().filter(lead=>{const okStatus=!filtro||lead.status.toLowerCase()===filtro;const texto=`${lead.nome} ${lead.telefone} ${lead.carro}`.toLowerCase();return okStatus&&(!busca||texto.includes(busca));});if(!leads.length){body.innerHTML='<tr><td colspan="11"><div class="note-box">Nenhum lead encontrado.</div></td></tr>';return;}const optionsStatus=['Novo lead','Atendimento iniciado','Orçamento enviado','Aguardando pagamento','Pago','Em produção','Enviado','Finalizado'];body.innerHTML=leads.map(lead=>`<tr><td>${lead.data}</td><td>${lead.nome}</td><td>${lead.telefone}</td><td>${lead.carro}</td><td>${lead.pelicula}</td><td>${lead.tonalidade}</td><td>${lead.parabrisa}</td><td>${moedaBR(lead.valor)}</td><td><select id="status_${lead.id}" class="crm-status">${optionsStatus.map(s=>`<option ${lead.status===s?'selected':''}>${s}</option>`).join('')}</select></td><td><textarea id="obs_${lead.id}" class="textarea" style="min-width:180px;margin:0">${lead.observacoes||''}</textarea></td><td><button class="btn-mini btn-save" onclick="atualizarLead(${lead.id})">Salvar</button> <button class="btn-mini btn-del" onclick="excluirLead(${lead.id})">Excluir</button></td></tr>`).join('');}
+    function exportarCRM(){const data={leads:getLeads(),exportadoEm:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup-crm-pr-film-kits.json';a.click();}
+    function importarCRM(event){const file=event.target.files[0];if(!file) return;const reader=new FileReader();reader.onload=function(e){try{const data=JSON.parse(e.target.result);const leads=Array.isArray(data)?data:(data.leads||[]);saveLeads(leads);atualizarKPIs();renderCRM();alert('Backup importado com sucesso.');}catch(err){alert('Arquivo inválido.');}};reader.readAsText(file);event.target.value='';}
+    let prTapCount=0;
+    document.getElementById('prSecret').addEventListener('click', function(){
+      prTapCount++;
+      if(prTapCount>=5){
+        abrirAcessoCRM();
+        prTapCount=0;
+      }
+      setTimeout(function(){ prTapCount=0; }, 1800);
+    });
+    ['nome','fone','outro'].forEach(id=>{document.getElementById(id).addEventListener('input',calc);});
+    window.onload=function(){toggleOutro();calc();};
+  </script>
+</body>
+</html>
